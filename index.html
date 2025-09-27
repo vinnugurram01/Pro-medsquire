@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedSquire Technologies - Full Stack Developer Training</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--gradient);
+            color: white;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            background: rgba(102, 126, 234, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: white;
+            background: var(--gradient2);
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 80px;
+            text-align: center;
+            background: var(--gradient), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1351&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+            line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+            font-weight: 400;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--gradient2);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: var(--gradient2);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Training Program Section */
+        .training {
+            background: white;
+        }
+
+        .program-highlights {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .highlight-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 30px 25px;
+            text-align: center;
+            width: 100%;
+            max-width: 280px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        var(--gradient) border-box;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .highlight-card i {
+            font-size: 2.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: transform 0.4s ease;
+        }
+
+        .highlight-card:hover i {
+            transform: scale(1.2);
+        }
+
+        .highlight-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.4rem;
+        }
+
+        .highlight-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .curriculum {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(white, white) padding-box,
+                        var(--gradient3) border-box;
+            border: 2px solid transparent;
+        }
+
+        .curriculum h3 {
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 1.8rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .course-module {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 12px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .course-module:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .module-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .module-title i {
+            margin-right: 10px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .module-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .module-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .module-list li:hover {
+            background: white;
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+
+        .module-list li:last-child {
+            border-bottom: none;
+        }
+
+        .module-list li i {
+            color: var(--success);
+            margin-right: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Placement Profiles */
+        .placements {
+            background: linear-gradient(135deg, #f5f7fb 0%, #e4e8f0 100%);
+        }
+
+        .profiles-container {
+            position: relative;
+            max-width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+        }
+
+        .profiles-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 20px 10px;
+            gap: 25px;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .profiles-scroll::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Opera */
+        }
+
+        .profile-card {
+            flex: 0 0 auto;
+            width: 280px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 4px solid var(--secondary);
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .profile-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        var(--gradient2) border-box;
+            transition: all 0.4s ease;
+        }
+
+        .profile-card:hover .profile-img {
+            transform: scale(1.1);
+            border-color: var(--accent);
+        }
+
+        .profile-info {
+            flex: 1;
+        }
+
+        .profile-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .profile-role {
+            color: var(--secondary);
+            font-size: 0.95rem;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .profile-company {
+            color: #666;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .profile-company i {
+            margin-right: 5px;
+            color: var(--primary);
+            font-size: 0.9rem;
+        }
+
+        .profile-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-package {
+            background: var(--gradient2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gradient);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .scroll-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .scroll-left {
+            left: 10px;
+        }
+
+        .scroll-right {
+            right: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gradient);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact .section-title h2 {
+            color: white;
+        }
+
+        .contact .section-title h2:after {
+            background: white;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            max-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 1.8rem;
+            color: white;
+            margin-right: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 50%;
+        }
+
+        .contact-item div h3 {
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.4s ease;
+        }
+
+        .about-content p:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 40px 0 30px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo {
+                margin-bottom: 15px;
+                text-align: center;
+            }
+
+            .hero {
+                padding: 120px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero h2 {
+                font-size: 1.3rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .scroll-btn {
+                display: block;
+            }
+
+            .profile-card {
+                width: 260px;
+            }
+
+            .curriculum {
+                padding: 25px;
+            }
+
+            .contact-item {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero h2 {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .profile-card {
+                width: 240px;
+            }
+            
+            .highlight-card {
+                max-width: 100%;
+            }
+
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <div class="header-content">
+               <div class="logo">
+                    <i class="fas fa-laptop-code"></i> 
+                    <span>MedSquire Technologies</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>WE'RE NOT JUST BUILDING WALLS - WE'RE BUILDING PROFESSIONAL CAREER!</h1>
+            <h2>AT ELURU</h2>
+           
+        </div>
+    </section>
+
+    <!-- Training Program Section -->
+    <section class="training" id="training">
+        <div class="container">
+            <div class="section-title">
+                <h2>Fullstack Developer Offline Training</h2>
+            </div>
+            
+            <div class="program-highlights">
+             
+               
+                <div class="highlight-card fade-in">
+                    <i class="fas fa-users"></i>
+                    <h3>Corporate Environment</h3>
+                    <p>Real Office Hours</p>
+                    <p>Professional Setup</p>
+                </div>
+                <div class="highlight-card fade-in">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Real-World Projects</h3>
+                    <p>Hands-on Training</p>
+                    <p>Industry Scenarios</p>
+                </div>
+            </div>
+            
+            <div class="curriculum fade-in">
+                <h3>Fullstack Developer Curriculum</h3>
+                
+                <div class="course-module">
+                    <div class="module-title"><i class="fas fa-code"></i> Frontend Development</div>
+                    <ul class="module-list">
+                        <li><i class="fas fa-check"></i> HTML5 & CSS3</li>
+                        <li><i class="fas fa-check"></i> JavaScript (ES6+)</li>
+                        <li><i class="fas fa-check"></i> Responsive Web Design</li>
+                        <li><i class="fas fa-check"></i> Modern UI Frameworks</li>
+                    </ul>
+                </div>
+                
+                <div class="course-module">
+                    <div class="module-title"><i class="fas fa-server"></i> Backend Development</div>
+                    <ul class="module-list">
+                        <li><i class="fas fa-check"></i> Node JS APIs</li>
+                        <li><i class="fas fa-check"></i> .NET Basics</li>
+                        <li><i class="fas fa-check"></i> .NET Core APIs</li>
+                        <li><i class="fas fa-check"></i> RESTful API Development</li>
+                    </ul>
+                </div>
+                
+                <div class="course-module">
+                    <div class="module-title"><i class="fas fa-database"></i> Databases</div>
+                    <ul class="module-list">
+                        <li><i class="fas fa-check"></i> SQL - Structured Data</li>
+                        <li><i class="fas fa-check"></i> MongoDB - NoSQL Storage</li>
+                    </ul>
+                </div>
+                
+                <div class="course-module">
+                    <div class="module-title"><i class="fas fa-tools"></i> DevOps & Development Tools</div>
+                    <ul class="module-list">
+                        <li><i class="fas fa-check"></i> Git & GitHub</li>
+                        <li><i class="fas fa-check"></i> Azure DevOps</li>
+                        <li><i class="fas fa-check"></i> CI/CD Pipelines</li>
+                        <li><i class="fas fa-check"></i> Prompt Engineering (AI)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Placements Section -->
+    <section class="placements" id="placements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Successful Placements</h2>
+            </div>
+            <div class="profiles-container">
+                <button class="scroll-btn scroll-left"><i class="fas fa-chevron-left"></i></button>
+                <div class="profiles-scroll">
+                    <!-- Profile cards will be generated by JavaScript -->
+                </div>
+                <button class="scroll-btn scroll-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item fade-in">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h3>Location</h3>
+                        <p>VedAm Mahal, Kathepu Street, Eluru, AP 534001</p>
+                    </div>
+                </div>
+                <div class="contact-item fade-in">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h3>Phone / WhatsApp</h3>
+                        <p>+91 90143 12221</p>
+                    </div>
+                </div>
+                <div class="contact-item fade-in">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h3>Email</h3>
+                        <p>info@medsquiretech.com</p>
+                    </div>
+                </div>
+                <div class="contact-item fade-in">
+                    <i class="fas fa-globe"></i>
+                    <div>
+                        <h3>Website</h3>
+                        <p>medsquiretech.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About MedSquire Technologies</h2>
+            </div>
+            <div class="about-content">
+                <p class="fade-in">Emerge as a Fullstack Developer who can compete with industry experts. Gain hands-on experience, tackle real-world projects and master Corporate Level Skills for immediate employment and lasting professional impact.</p>
+                <p class="fade-in">Our corporate-style bootcamp is designed to simulate real workplace environments, preparing you not just with technical skills but with the professional mindset needed to succeed in today's competitive tech industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 MedSquire Technologies Pvt Ltd. All Rights Reserved.</p>
+            <p>BOOK YOUR SEAT TODAY - LIMITED SLOTS AVAILABLE</p>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Generate placement profiles with actual data from the PDF
+        const profilesContainer = document.querySelector('.profiles-scroll');
+        
+        // Actual data from the PDF
+        const employeeData = [
+            { name: "Arun Sai", role: "Software Developer", company: "Tekreant" },
+            { name: "Boby Ganesh", role: "IT Analyst", company: "TCS" },
+            { name: "Vinay Chaitanya", role: "Software Developer", company: "Tekreant" },
+            { name: "Ravali Dasari", role: "Software Developer", company: "Tekreant" },
+            { name: "Rajyalakshmi Chava", role: "UI Developer", company: "Warrous" },
+            { name: "Sanjana Atluri", role: "Full Stack Developer", company: "Eshipject" },
+            { name: "Naveen Kumar", role: "Software Quality Assurance", company: "Light & Wonder" },
+            { name: "Suman Raj Vulli", role: "MERN Stack Developer", company: "Senwell Group" },
+            { name: "Rakesh Lakkam", role: "Software Engineer", company: "Computer Solution LLP" },
+            { name: "Kiran Kumar Palaparthi", role: "Full Stack Developer", company: "" },
+            { name: "Chandrani Madhira", role: "Partner Technical Advisor", company: "Microsoft" },
+            { name: "Bannu", role: "", company: "" },
+            { name: "Syam", role: "", company: "" },
+            { name: "Bhargavi", role: "", company: "" },
+            { name: "Keerthi Sana", role: "", company: "" }
+        ];
+        
+        // Generate random package between 4 and 15 LPA
+        const generateRandomPackage = () => {
+            return Math.floor(Math.random() * 12) + 4;
+        };
+        
+        employeeData.forEach((employee, index) => {
+            const profileCard = document.createElement('div');
+            profileCard.className = 'profile-card fade-in';
+            
+            const package = generateRandomPackage();
+            
+            profileCard.innerHTML = `
+                <div class="profile-header">
+                    <img src="https://i.pravatar.cc/150?img=${index + 10}" alt="${employee.name}" class="profile-img">
+                    <div class="profile-info">
+                        <div class="profile-name">${employee.name}</div>
+                        <div class="profile-role">${employee.role || "Software Developer"}</div>
+                        <div class="profile-company"><i class="fas fa-building"></i> ${employee.company || "Tech Company"}</div>
+                    </div>
+                </div>
+                <div class="profile-details">
+                    <div class="profile-package">${package} LPA</div>
+                </div>
+            `;
+            
+            profilesContainer.appendChild(profileCard);
+        });
+
+        // Horizontal scroll functionality
+        const scrollLeftBtn = document.querySelector('.scroll-left');
+        const scrollRightBtn = document.querySelector('.scroll-right');
+        const profilesScroll = document.querySelector('.profiles-scroll');
+
+        scrollLeftBtn.addEventListener('click', () => {
+            profilesScroll.scrollBy({
+                left: -300,
+                behavior: 'smooth'
+            });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            profilesScroll.scrollBy({
+                left: 300,
+                behavior: 'smooth'
+            });
+        });
+
+        // Show/hide scroll buttons based on scroll position
+        profilesScroll.addEventListener('scroll', () => {
+            if (profilesScroll.scrollLeft === 0) {
+                scrollLeftBtn.style.opacity = '0.5';
+            } else {
+                scrollLeftBtn.style.opacity = '1';
+            }
+            
+            if (profilesScroll.scrollLeft + profilesScroll.clientWidth >= profilesScroll.scrollWidth - 10) {
+                scrollRightBtn.style.opacity = '0.5';
+            } else {
+                scrollRightBtn.style.opacity = '1';
+            }
+        });
+
+        // Initialize button opacity
+        scrollLeftBtn.style.opacity = '0.5';
+
+        // Fade-in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        };
+        
+        // Check on load and scroll
+        window.addEventListener('load', fadeInOnScroll);
+        window.addEventListener('scroll', fadeInOnScroll);
+        
+        // Initial check
+        fadeInOnScroll();
+    </script>
+</body>
+</html>
