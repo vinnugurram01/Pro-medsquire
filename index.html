@@ -985,6 +985,25 @@
                 font-size: 3rem;
             }
         }
+        .custom-list {
+  list-style: none; /* remove default dots */
+  padding-left: 20px;
+}
+
+.custom-list li {
+  position: relative;
+  margin: 6px 0;
+  padding-left: 20px;
+}
+
+.custom-list li::before {
+  content: "\2022"; /* Unicode dot bullet */
+  position: absolute;
+  left: 0;
+  color: #007bff; /* blue color dot */
+  font-weight: bold;
+}
+
     </style>
 </head>
 <body>
@@ -1062,7 +1081,7 @@
                         <li><i class="fas fa-check"></i> Node JS</li>
                         <li><i class="fas fa-check"></i> .NET</li>
                         <li><i class="fas fa-check"></i> Type Script</li>
-                        <li><i class="fas fa-check"></i> Database Intergrations</li>
+                        <li><i class="fas fa-check"></i> Database Integrations</li>
                     </ul>
                 </div>
                 
@@ -1083,19 +1102,22 @@
                          <li><i class="fas fa-check"></i> Vercel</li>
                     </ul>
                 </div>
-                 <div class="course-module">
-                    <div class="module-title"><i class="fas fa-robot"></i> Prompt Engineering</div>
-                    <div class="module-list">
-  <p i class="fas fa-check"><b>Using AI tools</b></p>
-  <ul style="list-style-type: disc; padding-left: 20px;">
-    <li>ChatGPT</li>
-    <li>Copilot</li>
-    <li>Grok AI</li>
-    <li>Perplexity</li>
-  
-  </ul>
+               <div class="course-module">
+  <div class="module-title">
+    <i class="fas fa-robot"></i> Prompt Engineering
+  </div>
+
+  <div class="module-list">
+    <p><i class="fas fa-check"></i> <b>Using AI tools</b></p>
+    <ul class="custom-list">
+      <li>ChatGPT</li>
+      <li>Copilot</li>
+      <li>Grok AI</li>
+      <li>Perplexity</li>
+    </ul>
+  </div>
 </div>
-                </div>
+>
             </div>
         </div>
     </section>
