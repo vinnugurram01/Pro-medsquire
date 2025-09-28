@@ -128,7 +128,7 @@
             cursor: pointer;
         }
 
- .hero {
+.hero {
   padding: 120px 0 80px;
   text-align: center;
   background: var(--gradient), 
@@ -154,6 +154,9 @@
   z-index: 2;
   max-width: 900px;
   margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-quote {
@@ -163,32 +166,37 @@
   background: rgba(255, 255, 255, 0.1);
   padding: 20px 30px;
   border-radius: 10px;
-  display: inline-block;
   text-shadow: 0 3px 8px rgba(0,0,0,0.4);
   border: 2px solid #fff;
   transition: opacity 0.5s ease-in-out;
+  max-width: 700px;
+  text-align: center;
 }
 
-/* Navigation arrows */
-.quote-nav {
-  margin-top: 20px;
-}
-
+/* Navigation Arrows */
 .nav-btn {
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid #fff;
   color: white;
-  font-size: 24px;
-  padding: 8px 16px;
-  margin: 0 10px;
+  font-size: 30px;
+  padding: 10px 16px;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s;
+  z-index: 3;
 }
 
 .nav-btn:hover {
   background: white;
   color: black;
+}
+
+.nav-btn.left {
+  margin-right: 20px;
+}
+
+.nav-btn.right {
+  margin-left: 20px;
 }
 
 
@@ -1478,7 +1486,9 @@
                 }
             });
         };
-        const quotes = [
+        
+
+const quotes = [
   "“Mastering full stack development isn’t just a skill—it’s your passport to campus placement success.”",
   "“Why travel to Hyderabad when simialary is right here at home-town Eluru”",
   "“Level up your career—start your Full Stack journey with Medsquire in Eluru! 🚀💻”"
