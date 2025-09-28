@@ -154,9 +154,7 @@
   z-index: 2;
   max-width: 900px;
   margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
 .hero-quote {
@@ -170,16 +168,19 @@
   border: 2px solid #fff;
   transition: opacity 0.5s ease-in-out;
   max-width: 700px;
-  text-align: center;
+  margin: 0 auto;
 }
 
 /* Navigation Arrows */
 .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
   background: rgba(255, 255, 255, 0.2);
   border: 2px solid #fff;
   color: white;
-  font-size: 30px;
-  padding: 10px 16px;
+  font-size: 32px;
+  padding: 12px 18px;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s;
@@ -192,11 +193,11 @@
 }
 
 .nav-btn.left {
-  margin-right: 20px;
+  left: 20px;
 }
 
 .nav-btn.right {
-  margin-left: 20px;
+  right: 20px;
 }
 
 
@@ -1081,17 +1082,19 @@
 <!-- Hero Section -->
 <section class="hero" id="home">
   <div class="container">
+    <!-- Left Arrow -->
+    <button class="nav-btn left" onclick="prevQuote()">&#10094;</button>
+
+    <!-- Quote Text -->
     <h2 class="hero-quote" id="quoteText">
       “Mastering full stack development isn’t just a skill—it’s your passport to campus placement success.”
     </h2>
 
-    <!-- Navigation Arrows -->
-    <div class="quote-nav">
-      <button class="nav-btn" onclick="prevQuote()">&#10094;</button>
-      <button class="nav-btn" onclick="nextQuote()">&#10095;</button>
-    </div>
+    <!-- Right Arrow -->
+    <button class="nav-btn right" onclick="nextQuote()">&#10095;</button>
   </div>
 </section>
+
 
 
      <!-- Placements Section -->
