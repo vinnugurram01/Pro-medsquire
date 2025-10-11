@@ -128,97 +128,95 @@
             cursor: pointer;
         }
 
-.hero {
-  padding: 120px 0 80px;
-  text-align: center;
-  background: var(--gradient), 
-              url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1351&q=80');
-  background-size: cover;
-  background-position: center;
-  color: white;
-  position: relative;
-  overflow: hidden;
-}
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: var(--gradient), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1351&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 90%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-}
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 90%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
 
-.hero .container {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
+        .hero .container {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
 
-.hero-quote {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: 1.5;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px 30px;
-  border-radius: 10px;
-  text-shadow: 0 3px 8px rgba(0,0,0,0.4);
-  border: 2px solid #fff;
-  transition: opacity 0.5s ease-in-out;
-  max-width: 700px;
-  margin: 0 auto;
-}
+        .hero-quote {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.5;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px 30px;
+            border-radius: 10px;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.4);
+            border: 2px solid #fff;
+            transition: opacity 0.5s ease-in-out;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-/* Navigation Arrows */
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid #fff;
-  color: white;
-  font-size: 20px;
-  padding: 17px 8px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.3s;
-  z-index: 3;
-}
+        /* Navigation Arrows */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #fff;
+            color: white;
+            font-size: 20px;
+            padding: 17px 8px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 3;
+        }
 
-.nav-btn:hover {
-  background: white;
-  color: black;
-}
+        .nav-btn:hover {
+            background: white;
+            color: black;
+        }
 
-.nav-btn.left {
-  left: 20px;
-}
+        .nav-btn.left {
+            left: 20px;
+        }
 
-.nav-btn.right {
-  right: 20px;
-}
+        .nav-btn.right {
+            right: 20px;
+        }
 
+        /* Mobile view */
+        @media (max-width: 768px) {
+            .hero-quote {
+                font-size: 1.4rem;    /* smaller font for mobile */
+                max-width: 95%;       /* shrink width to force wrap */
+                display: block;
+                margin: 0 auto;
+            }
+        }
 
-/* Mobile view */
-@media (max-width: 768px) {
-  .hero-quote {
-    font-size: 1.4rem;    /* smaller font for mobile */
-    max-width: 95%;       /* shrink width to force wrap */
-    display: block;
-    margin: 0 auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-quote {
-    font-size: 1.2rem;
-    max-width: 350px;     /* forces 2-line wrap on small phones */
-    line-height: 1.4;
-  }
-}
-
+        @media (max-width: 480px) {
+            .hero-quote {
+                font-size: 1.2rem;
+                max-width: 350px;     /* forces 2-line wrap on small phones */
+                line-height: 1.4;
+            }
+        }
 
         .btn {
             display: inline-block;
@@ -783,7 +781,7 @@
             transform: translateX(5px);
         }
 
-        /* Contact Section */
+        /* Contact Section - IMPROVED */
         .contact {
             background: var(--gradient);
             color: white;
@@ -818,27 +816,30 @@
         }
 
         .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
             margin-bottom: 40px;
+            justify-items: center;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            max-width: 300px;
+            width: 100%;
+            max-width: 350px;
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
             transition: all 0.4s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .contact-item:hover {
             transform: translateY(-5px);
             background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .contact-item i {
@@ -848,11 +849,17 @@
             background: rgba(255, 255, 255, 0.2);
             padding: 15px;
             border-radius: 50%;
+            flex-shrink: 0;
         }
 
         .contact-item div h3 {
             margin-bottom: 5px;
             font-size: 1.2rem;
+        }
+
+        .contact-item div p {
+            font-size: 1rem;
+            line-height: 1.4;
         }
 
         .social-links {
@@ -915,6 +922,28 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .custom-list {
+            list-style: none; /* remove default dots */
+            padding-left: 20px;
+        }
+
+        .custom-list li {
+            position: relative;
+            margin: 6px 0;
+            padding-left: 20px;
+            font-size: 16px; /* text size for list items */
+        }
+
+        .custom-list li::before {
+            content: "\2022"; /* Unicode dot bullet */
+            position: absolute;
+            left: 0;
+            color: #007bff; /* blue color dot */
+            font-weight: bold;
+            font-size: 20px; /* dot size */
+            line-height: 1;
         }
 
         /* Responsive Design */
@@ -982,6 +1011,11 @@
                 padding: 25px;
             }
 
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
             .contact-item {
                 max-width: 100%;
             }
@@ -1032,30 +1066,17 @@
             .info-icon {
                 font-size: 3rem;
             }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-item i {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
         }
-       .custom-list {
-  list-style: none; /* remove default dots */
-  padding-left: 20px;
-}
-
-.custom-list li {
-  position: relative;
-  margin: 6px 0;
-  padding-left: 20px;
-  font-size: 16px; /* text size for list items */
-}
-
-.custom-list li::before {
-  content: "\2022"; /* Unicode dot bullet */
-  position: absolute;
-  left: 0;
-  color: #007bff; /* blue color dot */
-  font-weight: bold;
-  font-size: 20px; /* dot size */
-  line-height: 1;
-}
-
-
     </style>
 </head>
 <body>
@@ -1063,61 +1084,41 @@
     <header id="header">
         <div class="container">
             <div class="header-content">
-               <div class="logo">
-    <img src="company_logo.png" alt="MedSquire Technologies Logo" style="width:40px; height:40px; border-radius:50%; vertical-align:middle; margin-right:8px;">
-    <span style="font-weight:600; font-size:18px;">MedSquire Technologies</span>
-</div>
-
+                <div class="logo">
+                    <img src="company_logo.png" alt="MedSquire Technologies Logo" style="width:40px; height:40px; border-radius:50%; vertical-align:middle; margin-right:8px;">
+                    <span style="font-weight:600; font-size:18px;">MedSquire Technologies</span>
+                </div>
                 <button class="mobile-menu-btn">
-                   
+                    <i class="fas fa-bars"></i>
                 </button>
                 <nav>
                     <ul>
-                       
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#training">Training</a></li>
+                        <li><a href="#placements">Placements</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-<!-- Hero Section -->
-<section class="hero" id="home">
-  <div class="container">
-    <!-- Left Arrow -->
-    <button class="nav-btn left" onclick="prevQuote()">&#10094;</button>
-
-    <!-- Quote Text -->
-    <h2 class="hero-quote" id="quoteText">
-      “Mastering full stack development isn’t just a skill—it’s your passport to campus placement success.”
-    </h2>
-
-    <!-- Right Arrow -->
-    <button class="nav-btn right" onclick="nextQuote()">&#10095;</button>
-  </div>
-</section>
-
-
-
-     <!-- Placements Section -->
-    <section class="placements" id="placements">
+    <!-- Hero Section -->
+    <section class="hero" id="home">
         <div class="container">
-            <div class="section-title">
-                <h2>Our Successful Placements</h2>
-                <p>Meet our talented graduates who are making an impact in the tech industry</p>
-            </div>
-            <div class="profiles-container">
-                <button class="scroll-btn scroll-left"><i class="fas fa-chevron-left"></i></button>
-                <div class="profiles-scroll">
-                    <!-- Profile cards will be generated by JavaScript -->
-                </div>
-                <button class="scroll-btn scroll-right"><i class="fas fa-chevron-right"></i></button>
-            </div>
+            <!-- Left Arrow -->
+            <button class="nav-btn left" onclick="prevQuote()">&#10094;</button>
+
+            <!-- Quote Text -->
+            <h2 class="hero-quote" id="quoteText">
+                "Mastering full stack development isn't just a skill—it's your passport to campus placement success."
+            </h2>
+
+            <!-- Right Arrow -->
+            <button class="nav-btn right" onclick="nextQuote()">&#10095;</button>
         </div>
     </section>
-
-  
-
-   
 
     <!-- Training Program Section -->
     <section class="training" id="training">
@@ -1127,15 +1128,11 @@
             </div>
             
             <div class="program-highlights">
-              
-               
                 <div class="highlight-card fade-in">
                     <i class="fas fa-users"></i>
                     <h3>Corporate Environment</h3>
-                    
                     <p>Flexible Work hours</p>
                     <p>Collaborative culture</p>
-                    
                 </div>
                 <div class="highlight-card fade-in">
                     <i class="fas fa-project-diagram"></i>
@@ -1173,10 +1170,10 @@
                     <ul class="module-list">
                         <li><i class="fas fa-check"></i> Structured Data</li>
                          <ul class="custom-list">
-      <li>MSSQL</li>
-      <li>MYSQL</li>
-      <li>PostgreSQL</li>
-    </ul>
+                            <li>MSSQL</li>
+                            <li>MYSQL</li>
+                            <li>PostgreSQL</li>
+                        </ul>
                         <li><i class="fas fa-check"></i> NoSQL - MongoDB</li>
                     </ul>
                 </div>
@@ -1191,26 +1188,39 @@
                     </ul>
                 </div>
                <div class="course-module">
-  <div class="module-title">
-    <i class="fas fa-robot"></i> Prompt Engineering
-  </div>
-
-  <div class="module-list">
-    <li><i class="fas fa-check"></i> <b>  Using AI tools</b></li>
-    <ul class="custom-list">
-      <li>ChatGPT</li>
-      <li>Copilot</li>
-      <li>Grok AI</li>
-      <li>Perplexity</li>
-    </ul>
-  </div>
-</div>
-
+                    <div class="module-title">
+                        <i class="fas fa-robot"></i> Prompt Engineering
+                    </div>
+                    <div class="module-list">
+                        <li><i class="fas fa-check"></i> <b>Using AI tools</b></li>
+                        <ul class="custom-list">
+                            <li>ChatGPT</li>
+                            <li>Copilot</li>
+                            <li>Grok AI</li>
+                            <li>Perplexity</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-   
+    <!-- Placements Section -->
+    <section class="placements" id="placements">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Successful Placements</h2>
+                <p>Meet our talented graduates who are making an impact in the tech industry</p>
+            </div>
+            <div class="profiles-container">
+                <button class="scroll-btn scroll-left"><i class="fas fa-chevron-left"></i></button>
+                <div class="profiles-scroll">
+                    <!-- Profile cards will be generated by JavaScript -->
+                </div>
+                <button class="scroll-btn scroll-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
 
     <!-- More Information Section -->
     <section class="more-info" id="more-info">
@@ -1247,7 +1257,20 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
+     <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About MedSquire Technologies</h2>
+            </div>
+            <div class="about-content">
+                <p class="fade-in">Emerge as a Fullstack Developer who can compete with industry experts. Gain hands-on experience, tackle real-Time projects and master Corporate Level Skills for immediate employment and lasting professional impact.</p>
+                <p class="fade-in">Our corporate-style bootcamp is designed to simulate real workplace environments, preparing you not just with technical skills but with the professional mindset needed to succeed in today's competitive tech industry.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - IMPROVED -->
     <section class="contact" id="contact">
         <div class="container">
             <div class="section-title">
@@ -1289,19 +1312,6 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-    </section>
-    
-     <!-- About Section -->
-    <section class="about" id="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About MedSquire Technologies</h2>
-            </div>
-            <div class="about-content">
-                <p class="fade-in">Emerge as a Fullstack Developer who can compete with industry experts. Gain hands-on experience, tackle real-Time projects and master Corporate Level Skills for immediate employment and lasting professional impact.</p>
-                <p class="fade-in">Our corporate-style bootcamp is designed to simulate real workplace environments, preparing you not just with technical skills but with the professional mindset needed to succeed in today's competitive tech industry.</p>
             </div>
         </div>
     </section>
@@ -1376,36 +1386,7 @@
                 company: "Computer Solution.",
                 package: "₹6.2 LPA",
                 image: "rakesh_l.JPG"
-            },
-            // { 
-            //     name: "Sanjana Atluri", 
-            //     role: "Full Stack Developer", 
-            //     company: "Eshipject",
-            //     package: "₹8.2 LPA",
-            //     image: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            // },
-            // { 
-            //     name: "Naveen Kumar", 
-            //     role: "Software Quality Assurance", 
-            //     company: "Light & Wonder",
-            //     package: "₹7.0 LPA",
-            //     image: "https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            // },
-            // { 
-            //     name: "Suman Raj Vulli", 
-            //     role: "MERN Stack Developer", 
-            //     company: "Senwell Group",
-            //     package: "₹8.5 LPA",
-            //     image: "https://images.unsplash.com/photo-1517070208541-6ddc4d3efbcb?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            // },
-           
-            // { 
-            //     name: "Kiran Kumar Palaparthi", 
-            //     role: "Full Stack Developer", 
-            //     company: "Tech Solutions",
-            //     package: "₹7.8 LPA",
-            //     image: "https://images.unsplash.com/photo-1527980965255-d3b416303d12?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-            // }
+            }
         ];
 
         // Function to get company initials for logo
@@ -1491,34 +1472,33 @@
                 }
             });
         };
-        
 
-const quotes = [
-  "“Mastering full stack development isn’t just a skill—it’s your passport to campus placement success.”",
-  "“Why travel to Hyderabad when simialary is right here at home-town Eluru”",
-  "“Level up your career—start your Full Stack journey with Medsquire in Eluru! 🚀💻”"
-];
+        const quotes = [
+            "Mastering full stack development isn't just a skill—it's your passport to campus placement success.",
+            "Why travel to Hyderabad when similar opportunities are right here at home-town Eluru",
+            "Level up your career—start your Full Stack journey with Medsquire in Eluru! 🚀💻"
+        ];
 
-let currentQuote = 0;
-const quoteText = document.getElementById("quoteText");
+        let currentQuote = 0;
+        const quoteText = document.getElementById("quoteText");
 
-function showQuote(index) {
-  quoteText.style.opacity = 0;
-  setTimeout(() => {
-    quoteText.textContent = quotes[index];
-    quoteText.style.opacity = 1;
-  }, 300);
-}
+        function showQuote(index) {
+            quoteText.style.opacity = 0;
+            setTimeout(() => {
+                quoteText.textContent = quotes[index];
+                quoteText.style.opacity = 1;
+            }, 300);
+        }
 
-function prevQuote() {
-  currentQuote = (currentQuote - 1 + quotes.length) % quotes.length;
-  showQuote(currentQuote);
-}
+        function prevQuote() {
+            currentQuote = (currentQuote - 1 + quotes.length) % quotes.length;
+            showQuote(currentQuote);
+        }
 
-function nextQuote() {
-  currentQuote = (currentQuote + 1) % quotes.length;
-  showQuote(currentQuote);
-}
+        function nextQuote() {
+            currentQuote = (currentQuote + 1) % quotes.length;
+            showQuote(currentQuote);
+        }
 
         // Check on load and scroll
         window.addEventListener('load', fadeInOnScroll);
